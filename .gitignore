@@ -1,0 +1,44 @@
+log/
+.env
+
+### Go ###
+# Бинарные файлы
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Тестовые бинарные файлы
+*.test
+
+# Выходные директории сборки
+bin/
+dist/
+out/
+
+# Файлы зависимостей Go
+go.sum
+
+# IDE и редакторы
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Автогенерируемые файлы
+*.log
+*.out
+
+# Директория модуля Go
+vendor/
+
+# Директория кэша Go
+go.work
+go.work.sum
+
+# Файлы для разработки
+debug
+.env.local
+.env.development
+.env.test
