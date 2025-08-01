@@ -21,13 +21,13 @@ jobs:
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
             echo "ENVIRONMENT=prod" >> $GITHUB_ENV
             echo "TAG=prod" >> $GITHUB_ENV
-            echo "ENV_FILE=${{ secrets.ENV_FILE_PROD }}" >> $GITHUB_ENV
+            echo "ENV_FILE=${{ secrets.ENV_FILE_PROD_B64 }}" >> $GITHUB_ENV
             echo "PORT=8080" >> $GITHUB_ENV
             echo "CONTAINER_NAME=tgbot-chinese-prod" >> $GITHUB_ENV
           else
             echo "ENVIRONMENT=dev" >> $GITHUB_ENV
             echo "TAG=dev" >> $GITHUB_ENV
-            echo "ENV_FILE=${{ secrets.ENV_FILE_DEV }}" >> $GITHUB_ENV
+            echo "ENV_FILE=${{ secrets.ENV_FILE_DEV_B64 }}" >> $GITHUB_ENV
             echo "PORT=8081" >> $GITHUB_ENV
             echo "CONTAINER_NAME=tgbot-chinese-dev" >> $GITHUB_ENV
           fi
@@ -57,8 +57,8 @@ jobs:
             docker rm ${{ env.CONTAINER_NAME }} || true
             docker image prune -f
 
-            echo '${{ env.ENV_FILE }}' > /tmp/.env
-
+            echo '${{ env.ENV_FILE }}' | base64 -d > /tmp/.env
+            
             docker run -d \
               --name ${{ env.CONTAINER_NAME }} \
               --restart unless-stopped \
