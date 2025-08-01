@@ -1,5 +1,9 @@
 log/
 .env
+.env.prod
+.env.production
+.env.dev
+.env.development
 
 ### Go ###
 # Бинарные файлы
