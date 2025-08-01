@@ -21,9 +21,6 @@ bin/
 dist/
 out/
 
-# Файлы зависимостей Go
-go.sum
-
 # IDE и редакторы
 .idea/
 .vscode/
