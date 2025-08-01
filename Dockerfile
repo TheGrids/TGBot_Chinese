@@ -14,6 +14,7 @@ FROM alpine:latest
 
 WORKDIR /app
 COPY --from=builder /app/bot .
+COPY --from=builder /app/assets ./assets
 
 # Запускаем бинарник
 ENTRYPOINT ["./bot"]
