@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  telegram-bot:
+    image: ${IMAGE_NAME}:${TAG}
+    restart: unless-stopped
+    env_file: .env
+    container_name: tgbot-chinese-${TAG}
