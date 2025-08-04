@@ -63,6 +63,7 @@ jobs:
               --name ${{ env.CONTAINER_NAME }} \
               --restart unless-stopped \
               -p ${{ env.PORT }}:8080 \
+              -v /var/log/tgbot-chinese:/app/logs \
               -v /tmp/.env:/app/.env:ro \
               ${{ env.IMAGE_NAME }}:${{ env.TAG }}
 
