@@ -57,13 +57,13 @@ jobs:
             docker rm ${{ env.CONTAINER_NAME }} || true
             docker image prune -f
 
-            echo '${{ env.ENV_FILE }}' | base64 -d > /tmp/.env
+            echo '${{ env.ENV_FILE }}' | base64 -d > /tmp/.env-tgbot-chinese
             
             docker run -d \
               --name ${{ env.CONTAINER_NAME }} \
               --restart unless-stopped \
               -p ${{ env.PORT }}:8080 \
               -v /var/log/tgbot-chinese:/app/logs \
-              -v /tmp/.env:/app/.env:ro \
+              -v /tmp/.env-tgbot-chinese:/app/.env:ro \
               ${{ env.IMAGE_NAME }}:${{ env.TAG }}
 
